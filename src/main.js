@@ -12,6 +12,22 @@ const store = createStore({
         return {
             counter:7
         }
+    },
+    mutations:{
+        add(state,payload){
+            if(payload){
+                state.counter = state.counter + payload.value
+            } else {
+                state.counter++;
+            }
+        },
+        substract(state,payload){
+            if(payload){
+                state.counter = state.counter - payload.value
+            } else {
+                state.counter--;
+            }
+        }
     }
 });
 

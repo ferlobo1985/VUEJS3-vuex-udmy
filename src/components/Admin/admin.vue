@@ -5,7 +5,7 @@
       <div class="col-sm-5">
         <p>
           <strong>
-          Change count:0
+          Change count: {{ this.$store.state.counter }}
           </strong>
         </p>
 
@@ -19,10 +19,10 @@
         </div>
         <br/>
 
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" @click="adminAdd">
           +
         </button>
-        <button type="button" class="btn btn-outline-secondary">
+        <button type="button" class="btn btn-outline-secondary" @click="adminSubstract">
           -
         </button>
       </div>
@@ -36,6 +36,17 @@ export default {
     data(){
       return {
         amount:1
+      }
+    },
+    methods:{
+      adminAdd(){
+        this.$store.commit({
+          type:'add',
+          value: this.amount
+        });
+      },
+      adminSubstract(){
+        this.$store.commit('substract', { value:this.amount });
       }
     }
 }
