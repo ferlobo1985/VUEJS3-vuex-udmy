@@ -13,10 +13,10 @@
            <router-link to="/admin" class="nav-link">Admin</router-link>
         </li>
         <li class="nav-item" v-if="!this.$store.state.auth">
-           <div class="nav-link" @click="loginUser">Login</div>
+           <div class="nav-link" @click="loginUser()">Login</div>
         </li>
         <li class="nav-item" v-if="this.$store.state.auth">
-           <div class="nav-link" @click="logoutUser">Logout</div>
+           <div class="nav-link" @click="logoutUser(false)">Logout</div>
         </li>
       </ul>
     </header>
@@ -24,16 +24,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   methods:{
-    loginUser(){
-        this.$store.dispatch({
-          type:'authUser'
-        })
-    },
-    logoutUser(){
-      this.$store.dispatch('signOut',false)
-    }
+    ...mapActions({
+      loginUser:'authUser',
+      logoutUser: 'signOut'
+    })
+    // loginUser(){
+    //     this.$store.dispatch({
+    //       type:'authUser'
+    //     })
+    // },
+    // logoutUser(){
+    //   this.$store.dispatch('signOut',false)
+    // }
   }
 }
 </script>
