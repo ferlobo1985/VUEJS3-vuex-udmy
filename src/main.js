@@ -18,7 +18,8 @@ const store = createStore({
                 'Coffee',
                 'Guitar',
                 'Nothing :*('
-            ]
+            ],
+            auth:false
         }
     },
     getters:{
@@ -55,6 +56,27 @@ const store = createStore({
             } else {
                 state.counter--;
             }
+        },
+        setAuth(state,payload){
+            state.auth = payload.value;
+        }
+    },
+    actions:{
+        authUser(context){
+            console.log(context)
+            setTimeout(()=>{
+                context.commit('setAuth',{ value: true});
+                context.dispatch('analytics',{username:'Francis'});
+            },500);
+        },
+        signOut(context,payload){
+            context.commit('setAuth',{ value: payload })
+        },
+        analytics(context,payload){
+            console.log({
+                title:'Ne sign in',
+                username:payload.username
+            })
         }
     }
 });
