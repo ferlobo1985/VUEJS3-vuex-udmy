@@ -1,5 +1,6 @@
 /* eslint-disable */
 const counterModule = {
+    namespaced:true,
     state(){
         return {
             counter:7,

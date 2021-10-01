@@ -39,7 +39,7 @@ export default {
     countComponent
   },
   computed:{
-    ...mapGetters({
+    ...mapGetters('counter',{
       prize: 'getPrize'
     }),
     // ...mapGetters(['getPrize'])
@@ -48,7 +48,7 @@ export default {
     // },
   },
   methods:{
-    ...mapMutations(['add','substract']),
+    ...mapMutations('counter',['add','substract']),
     // add(){
     //   this.$store.commit('add');
     // },

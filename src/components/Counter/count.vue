@@ -6,7 +6,7 @@
     export default {
         computed:{
             counterValue(){
-                return this.$store.getters.getCount
+                return this.$store.getters['counter/getCount']
             }
         }
     }

@@ -5,7 +5,7 @@
       <div class="col-sm-5">
         <p>
           <strong>
-          Change count: {{ this.$store.getters.getCount }}
+          Change count: {{ this.$store.getters['counter/getCount'] }}
           </strong>
         </p>
 
@@ -41,7 +41,7 @@ export default {
       }
     },
     methods:{
-      ...mapMutations({
+      ...mapMutations('counter',{
         adminAdd:'add',
         adminSubstract: 'substract'
       }),
